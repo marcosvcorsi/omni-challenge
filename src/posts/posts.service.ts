@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from './post.entity';
@@ -33,10 +33,22 @@ export class PostsService {
   }
 
   async update(id: number, updatePostDto: UpdatePostDto): Promise<void> {
+    const post = await this.postsRepository.findOne(id);
+
+    if (!post) {
+      throw new BadRequestException('Post not found');
+    }
+
     await this.postsRepository.update(id, updatePostDto);
   }
 
   async delete(id: number) {
+    const post = await this.postsRepository.findOne(id);
+
+    if (!post) {
+      throw new BadRequestException('Post not found');
+    }
+
     await this.postsRepository.delete(id);
   }
 }
