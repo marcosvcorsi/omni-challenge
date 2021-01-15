@@ -22,7 +22,7 @@ Criar um meio para efetuar uma autenticação. Não é mandatório mas é um dif
 # Admin Blog API
 
 ## Sobre
-
+---
 Projeto criado como desafio técnico de Node.js, escolhi as tecnologias abaixo por ser
 de fácil implementação e por possuir um setup inicial bacana. Como o desafio pedia um banco embeded, acabei
 usando um ORM para o SQLite, mas se for necessário mudar para outro banco SQL não teria
@@ -69,7 +69,7 @@ se necessário, crie o seu de acordo com o .env.example.
 
 ## Execução
 
-```
+```bash
 # Roda as migrations no banco local SQLite
 $ yarn typeorm migration:run
 
@@ -84,10 +84,8 @@ $ yarn test
 ## Endpoints
 Documentação disponivel em http://localhost:3000/docs
 
-###Users
-
 Criar usuário:
-```
+```bash
 curl --request POST \
   --url http://localhost:3000/users \
   --header 'Content-Type: application/json' \
@@ -96,7 +94,7 @@ curl --request POST \
 	"email": "anymail@mail.com",
 	"password": "123456"
 }'
-
+```
 Login Usuário:
 ```
 curl --request POST \
@@ -107,24 +105,23 @@ curl --request POST \
 	"password": "123456"
 }'
 ```
-###Posts
 
 Listar postagens:
-```
+```bash
 curl --request GET \
   --url http://localhost:3000/api/v1/posts \
   --header 'Authorization: Bearer token'
 ```
 
 Obter uma postagem:
-```
+```bash
 curl --request GET \
   --url http://localhost:3000/api/v1/posts/1 \
   --header 'Authorization: Bearer token'
 ```
 
 Criar postagem:
-```
+```bash
 curl --request POST \
   --url http://localhost:3000/posts \
   --header 'Authorization: Bearer token' \
@@ -136,7 +133,7 @@ curl --request POST \
 ```
 
 Editar postagem:
-```
+```bash
 curl --request PUT \
   --url http://localhost:3000/posts/1 \
   --header 'Authorization: Bearer token' \
@@ -148,7 +145,7 @@ curl --request PUT \
 ```
 
 Deletar postagem:
-```
+```bash
 curl --request DELETE \
   --url http://localhost:3000/posts/1 \
   --header 'Authorization: Bearer token'
