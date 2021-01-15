@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreatePostDto } from './dto/create-post.dto';
+import { UpdatePostDto } from './dto/update-post.dto';
 import { Post } from './post.entity';
 import { PostsRepository } from './posts.repository';
 
@@ -29,5 +30,9 @@ export class PostsService {
     await this.postsRepository.save(post);
 
     return post;
+  }
+
+  async update(id: number, updatePostDto: UpdatePostDto): Promise<void> {
+    await this.postsRepository.update(id, updatePostDto);
   }
 }
