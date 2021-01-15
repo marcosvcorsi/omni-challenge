@@ -15,6 +15,7 @@ async function bootstrap() {
     .setTitle('Posts')
     .setDescription('API CRUD for posts from users')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
