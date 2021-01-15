@@ -35,4 +35,8 @@ export class PostsService {
   async update(id: number, updatePostDto: UpdatePostDto): Promise<void> {
     await this.postsRepository.update(id, updatePostDto);
   }
+
+  async delete(id: number) {
+    await this.postsRepository.delete(id);
+  }
 }

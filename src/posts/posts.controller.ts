@@ -9,6 +9,7 @@ import {
   Param,
   HttpCode,
   HttpStatus,
+  Delete,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { CreatePostDto } from './dto/create-post.dto';
@@ -45,5 +46,11 @@ export class PostsController {
     @Body() updatePostDto: UpdatePostDto,
   ): Promise<void> {
     await this.postsService.update(id, updatePostDto);
+  }
+
+  @Delete('/:id')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async delete(@Param('id') id: number) {
+    await this.postsService.delete(id);
   }
 }
