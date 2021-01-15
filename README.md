@@ -21,11 +21,6 @@ Criar um meio para efetuar uma autenticação. Não é mandatório mas é um dif
 
 # Admin Blog API
 
-Projeto criado como desafio técnico de Node.js, escolhi as tecnologias abaixo por ser
-de fácil implementação e por possuir um setup inicial bacana. Como o desafio pedia um banco embeded, acabei
-usando um ORM para o SQLite, mas se for necessário mudar para outro banco SQL não teria grandes alterações. Aproveitei para usar a arquitetura com separação (controllers, services, entidades e repositórios).
----
-
 ## O que o projeto faz?
 
 - Cadastrar e autentica o usuário.
@@ -73,7 +68,7 @@ $ yarn typeorm migration:run
 # Ambiente de desenvolvimento
 $ yarn star:dev
 
-# Testes unitários (somenta para o arquivo service das postagens)
+# Testes unitários (somente para o arquivo service das postagens)
 $ yarn test
 ```
 
