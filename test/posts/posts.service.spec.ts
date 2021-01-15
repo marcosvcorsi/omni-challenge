@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { CreatePostDto } from 'src/posts/dto/create-post.dto';
 import { UpdatePostDto } from 'src/posts/dto/update-post.dto';
-import { User } from 'src/users/user.entity';
 import { Post } from '../../src/posts/post.entity';
 import { PostsRepository } from '../../src/posts/posts.repository';
 import { PostsService } from '../../src/posts/posts.service';
