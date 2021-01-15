@@ -31,6 +31,11 @@ export class PostsController {
     return this.postsService.findAllByUser(userId);
   }
 
+  @Get('/:id')
+  async findById(@Param('id') id: number): Promise<PostEntity> {
+    return this.postsService.findById(id);
+  }
+
   @Post()
   async create(
     @Body() createPostDto: CreatePostDto,

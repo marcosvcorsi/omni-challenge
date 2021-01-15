@@ -21,6 +21,16 @@ export class PostsService {
     return posts;
   }
 
+  async findById(id: number): Promise<Post> {
+    const post = await this.postsRepository.findOne(id);
+
+    if (!post) {
+      throw new BadRequestException('Post not found');
+    }
+
+    return post;
+  }
+
   async create(createPostDto: CreatePostDto, userId: number): Promise<Post> {
     const post = this.postsRepository.create({
       ...createPostDto,
@@ -33,21 +43,13 @@ export class PostsService {
   }
 
   async update(id: number, updatePostDto: UpdatePostDto): Promise<void> {
-    const post = await this.postsRepository.findOne(id);
-
-    if (!post) {
-      throw new BadRequestException('Post not found');
-    }
+    await this.findById(id);
 
     await this.postsRepository.update(id, updatePostDto);
   }
 
   async delete(id: number) {
-    const post = await this.postsRepository.findOne(id);
-
-    if (!post) {
-      throw new BadRequestException('Post not found');
-    }
+    await this.findById(id);
 
     await this.postsRepository.delete(id);
   }
