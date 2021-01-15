@@ -50,9 +50,7 @@ export class UsersService {
       throw new UnauthorizedException('E-mail or password does not match');
     }
 
-    const { id } = user;
-
-    const token = this.jwtService.sign({ id });
+    const token = this.jwtService.sign({ userId: user.id });
 
     return { token };
   }
