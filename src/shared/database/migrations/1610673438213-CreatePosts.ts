@@ -37,7 +37,7 @@ export class CreatePosts1610673438213 implements MigrationInterface {
         foreignKeys: [
           {
             columnNames: ['user_id'],
-            referencedTableName: 'user',
+            referencedTableName: 'users',
             referencedColumnNames: ['id'],
           },
         ],
