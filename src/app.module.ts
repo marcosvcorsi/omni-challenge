@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { JwtConfigModule } from './shared/modules/jwt.module';
@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { PostsModule } from './posts/posts.module';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './shared/strategy/jwt.strategy';
+import { LoggerMiddleware } from './shared/middlewares/logger.middleware';
 
 @Module({
   imports: [
@@ -23,4 +24,8 @@ import { JwtStrategy } from './shared/strategy/jwt.strategy';
   controllers: [],
   providers: [JwtStrategy],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}

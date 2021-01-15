@@ -1,7 +1,14 @@
-import { CreatePostDto } from './create-post.dto';
-import { PickType } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsString } from 'class-validator';
 
-export class UpdatePostDto extends PickType(CreatePostDto, [
-  'title',
-  'content',
-] as const) {}
+export class UpdatePostDto {
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  title: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  content: string;
+}
